@@ -341,6 +341,13 @@ async@^2.6.2:
   dependencies:
     lodash "^4.17.14"
 
+atguigu-utils@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.npmjs.org/atguigu-utils/-/atguigu-utils-1.1.8.tgz#bebeb49b5d5a6755116921f737a8ef28ac09d4dd"
+  integrity sha512-QnqO33u/44H9ZP0rQB+NhTXXsFmKO01RCysIgt7vvCrVbLX9Bn7iW52q+wl4fWZvq7Eh5IllozG9d49O1T5dmA==
+  dependencies:
+    lodash "^4.17.15"
+
 atob@^2.1.2:
   version "2.1.2"
   resolved "https://registry.npmjs.org/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
@@ -2087,7 +2094,7 @@ locate-path@^3.0.0:
     p-locate "^3.0.0"
     path-exists "^3.0.0"
 
-lodash@^4.17.11, lodash@^4.17.14:
+lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15:
   version "4.17.15"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
