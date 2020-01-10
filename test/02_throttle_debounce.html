@@ -39,11 +39,7 @@
   -->
 
   <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.js"></script>
-  <script>
-    
-
-    
-  </script>
+  <script src="../dist/190719-utils.js"></script>
   <script>
     /* 处理点击事件的回调函数 */
     function handleClick(event) { // 处理事件的回调
@@ -53,8 +49,8 @@
     document.getElementById('throttle').onclick = handleClick
     // document.getElementById('throttle').onclick = _.throttle(handleClick, 2000, { 'trailing': false })
     // document.getElementById('debounce').onclick = _.debounce(handleClick, 2000)
-    document.getElementById('throttle').onclick = throttle(handleClick, 2000)
-    document.getElementById('debounce').onclick = debounce(handleClick, 2000)
+    document.getElementById('throttle').onclick = aUtils.throttle(handleClick, 2000)
+    document.getElementById('debounce').onclick = aUtils.debounce(handleClick, 2000)
 
   </script>
 
