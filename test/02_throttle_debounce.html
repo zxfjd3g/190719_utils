@@ -40,46 +40,9 @@
 
   <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.js"></script>
   <script>
-    /* 
-    用来返回节流函数的工具函数
-    */
-    function throttle(callback, delay) {
-      let pre = 0 // 默认值不要是Date.now() ==> 第1次事件立即调用
-      return function (event) { // 节流函数/真正的事件回调函数   this是发生事件的标签
-        console.log('事件 throttle')
-        const current = Date.now()
-        if (current - pre > delay) { // 只有离上一次调用callback的时间差大于delay
-          // 调用真正处理事件的函数, this是事件源, 参数是event
-          callback.call(this, event)
-          // 记录此次调用的时间
-          pre = current
-        }
-      }
-    }
+    
 
-    /* 
-    用来返回防抖函数的工具函数
-    */
-    function debounce(callback, delay) {
-      return function (event) {
-
-        // 如果上次事件还没有真正处理, 取消它
-        // if (callback.timeoutId) { // 会查找原型链
-        if (callback.hasOwnProperty('timeoutId')) { // 不会查找原型链
-          // 清除
-          clearTimeout(callback.timeoutId)
-        }
-
-        // 发事件发生指定事件后才调用处理事件的回调函数
-        // 启动定时器, 只是准备真正处理
-        callback.timeoutId = setTimeout(() => {
-          // 正在处理事件
-          callback.call(this, event)
-          // 删除准备处理的标记
-          delete callback.timeoutId
-        }, delay)
-      }
-    }
+    
   </script>
   <script>
     /* 处理点击事件的回调函数 */

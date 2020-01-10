@@ -1,0 +1,11 @@
+{
+  "name": "190719_utils",
+  "version": "1.0.0",
+  "main": "dist/190719-utils.js",
+  "repository": "https://github.com/zxfjd3g/190719_utils.git",
+  "author": "zxfjd3g <258147149@qq.com>",
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}

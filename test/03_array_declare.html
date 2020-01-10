@@ -9,42 +9,9 @@
 <body>
   <script>
 
-    Array.prototype.map = function (callback) {
-      const arr = []
-      // 遍历当前数组每个元素, 调用callback得到一个结果数据, 添加arr
-      for (let index = 0; index < this.length; index++) {
-        const element = this[index];
-        const result = callback(element, index)
-        arr.push(result)
-      }
-      return arr
-    }
+    
 
-    Array.prototype.reduce = function (callback, initValue) {
-      // 结果为初始值
-      let total = initValue
-      // 遍历当前数组每个元素, 调用callback得到一个累加的结果数据
-      for (let index = 0; index < this.length; index++) {
-        const element = this[index];
-        total = callback(total, element, index)
-      }
-
-      // 返回结果
-      return total
-    }  
-
-    Array.prototype.filter = function (callback) {
-      const arr = []
-      // 遍历当前数组每个元素, 调用callback得到一个布尔值, 如果为true, 将当前element添加到arr
-      for (let index = 0; index < this.length; index++) {
-        const element = this[index];
-        const result = callback(element, index)
-        if (result) {
-          arr.push(element)
-        }
-      }
-      return arr
-    }  
+    
   </script>
   <script>
     /* 
