@@ -38,16 +38,37 @@
             输入框实时搜索联想（keyup/input）
   -->
 
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.js"></script>
+  <script>
+    /* 
+    用来返回节流函数的工具函数
+    */
+    function throttle(callback, delay) {
+      let pre = 0 // 默认值不要是Date.now() ==> 第1次事件立即调用
+      return function (event) { // 节流函数/真正的事件回调函数   this是发生事件的标签
+        console.log('事件 throttle')
+        const current = Date.now()
+        if (current - pre > delay) { // 只有离上一次调用callback的时间差大于delay
+          // 调用真正处理事件的函数, this是事件源, 参数是event
+          callback.call(this, event)
+          // 记录此次调用的时间
+          pre = current
+        }
+      }
+    }
+  </script>
   <script>
     /* 处理点击事件的回调函数 */
     function handleClick(event) { // 处理事件的回调
       console.log('处理点击事件', this, event)
     }
 
-    // document.getElementById('throttle').onclick = handleClick
-    document.getElementById('throttle').onclick = aUtils.throttle(handleClick, 2000)
-    document.getElementById('debounce').onclick = aUtils.debounce(handleClick, 2000)
+    document.getElementById('throttle').onclick = handleClick
+    // document.getElementById('throttle').onclick = _.throttle(handleClick, 2000, { 'trailing': false })
+    // document.getElementById('debounce').onclick = _.debounce(handleClick, 2000)
+    document.getElementById('throttle').onclick = throttle(handleClick, 2000)
+    document.getElementById('debounce').onclick = _.debounce(handleClick, 2000)
+
   </script>
 
 </body>
