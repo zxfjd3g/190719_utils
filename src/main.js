@@ -11,3 +11,4 @@ export { map, reduce, filter, find, findIndex, every, some } from './array/decla
 export {unique1, unique2, unique3} from './array/unique'
 export {concat} from './array/concat'
 export {slice} from './array/slice'
+export {flatten1, flatten2} from './array/flatten'
