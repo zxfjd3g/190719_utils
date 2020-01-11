@@ -12,9 +12,9 @@ export function chunk(array, size=1) {
   // 处理size
   if (size<1) {
     size = 1
-  } else if (size>array.length) {
+  } /* else if (size>array.length) {
     size = array.length
-  }
+  } */
 
   array.forEach(item => {
 
