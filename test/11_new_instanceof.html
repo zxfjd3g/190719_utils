@@ -18,30 +18,32 @@
         实现: Type的原型对象是否是obj的原型链上的某个对象, 如果是返回tru, 否则返回false
     */
   </script>
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/190719-utils.js"></script>
   <script>
     function Person(name, age) {
       this.name = name
       this.age = age
-      return {}
+      // 如果构造函数return的是一个对象类型数据, new的结果是return的结果, 否则是新创建的对象
+      // return {}
       // return []
       // return function (){}
-      // return 1
+      return 1
       // return undefined
     }
 
     const p = new Person('tom', 12)
     console.log(p)
 
-    const p2 = aUtils.newInstance(Person, 'Jack', 13)
+    const p2 = aUtils.newInstance(Person, 'Jack', 13)  // new Person('Jack', 13)
     console.log(p2, p2.constructor)
 
   </script>
   <script>
-    console.log(aUtils.myInstanceOf(p, Object))
-    console.log(aUtils.myInstanceOf(p, Person))
-    console.log(aUtils.myInstanceOf(aUtils.myInstanceOf, Function))
-    console.log(aUtils.myInstanceOf(p, String), aUtils.myInstanceOf(p, Function))
+    console.log(aUtils.myInstanceOf(p, Object))  // true
+    console.log(aUtils.myInstanceOf(p, Person)) // true
+    console.log(aUtils.myInstanceOf(aUtils.myInstanceOf, Function)) // true
+    console.log(aUtils.myInstanceOf(p, String), aUtils.myInstanceOf(p, Function)) // false false
+    console.log(p instanceof Function) // false
   </script>
 </body>
 </html>
