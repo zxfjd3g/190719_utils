@@ -60,7 +60,7 @@
           
     2). 注册npm中央仓库账号
         https://www.npmjs.com/
-        用户名/密码/邮箱
+        用户名/密码/邮箱(验证)
 		
     3). npm addUser
         登陆npm仓库

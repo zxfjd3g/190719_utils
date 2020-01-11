@@ -14,10 +14,13 @@
 ## 1. 函数的call() / apply() / bind()
     1. 区别call()/apply()/bind()
         call(obj)/apply(obj): 调用函数, 指定函数中的this为第一个参数的值
-        bind(obj): 返回一个新的函数, 新函数内部会调用原来的函数, 且this为bind()指定的第一参数的值
+        bind(obj): 
+            返回一个新的函数, 新函数内部会调用原来的函数, 且this为bind()指定的第一参数的值
+            一旦调用新函数, 原函数就会调用, 且tis是bind指定的第一个参数
+            如果直接调用原函数, this不是bind指定的第一个参数
         注意: 如果obj是null/undefined, this为window
     2. 应用
-        call()/bind()应用: 根据伪数组生成真数组
+        call()/apply()应用: 根据伪数组生成真数组
         bind(): react中组件的自定义方法 / vue中的事件回调函数内部
     3. 自定义call()/apply()
         1). 给obj添加一个临时方法, 方法名任意, 值为当前函数
