@@ -31,8 +31,19 @@
       this.price = price
     }
 
+    /* 
+    创建一个指定原型对象的任意类型的实例
+    */
+    function create(proto) {
+      function Fn() { }
+      // 将Person的原型对象指定为Fn的原型对象
+      Fn.prototype = proto
+      return new Fn()
+    }
+
     // 让Student原型对象是Person的实例
-    Student.prototype = new Person()
+    // Student.prototype = new Person()
+    Student.prototype = create(Person.prototype)
     // 让新的原型的constructor指向子类型Student
     Student.prototype.constructor = Student
     // 给新的原型对象添加方法
@@ -49,6 +60,13 @@
     /* 
     问题1: student的原型对象包含几个必要的属性
     问题2: Student构造函数多执行了1次
+    */
+
+    /* 
+    寄生组合式继承: 寄生 + prototype + call
+    1. 构造函数中用call借用父类型构造函数, 得到父类型的属性
+    2. 指定新的原型对象, 得到父类型原型对象上的方法
+    3. 寄生处理: 去除原型对象上多余的属性
     */
 
   </script>
