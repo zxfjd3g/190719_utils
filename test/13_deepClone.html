@@ -20,23 +20,22 @@
           数组: while | for | forEach() 优于 for-in | keys()&forEach() 
           对象: for-in 与 keys()&forEach() 差不多
   -->
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/190719-utils.js"></script>
   <script>
     const obj1 = { 
-      a: 1,
-      b: [ 'e', 'f', 'g'],
-      c: { h: { i: 2 } },
-      d: function (){}
+        a: 1,
+        b: [ 'e', 'f', 'g'],
+        c: { h: { i: 2 } },
+        d: function (){}
      }
-     obj1.b.push(obj1.c)
+     obj1.b.push(obj1.c) // 将c添加到b中
      obj1.c.j = obj1.b
      
-    //  const obj1Clone = _.cloneDeep(obj1)
-    //  const obj1Clone = aUtils.deepClone1(obj1)
+     const obj1Clone = aUtils.deepClone1(obj1)
     //  const obj1Clone = aUtils.deepClone2(obj1)
     //  const obj1Clone = aUtils.deepClone3(obj1)
-     const obj1Clone = aUtils.deepClone4(obj1)
-     console.log(obj1Clone, obj1Clone.c === obj1.c, obj1Clone.d===obj1.d)
+    //  const obj1Clone = aUtils.deepClone4(obj1)
+     console.log(obj1Clone, obj1Clone.b===obj1.b, obj1Clone.c===obj1.c)
   </script>
 </body>
 </html>
