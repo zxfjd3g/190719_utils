@@ -12,4 +12,7 @@ export function apply (fn, obj, args) {
   delete obj.tempFn
   // 返回方法的返回值
   return result
+
+  // return call(fn, obj, ...args)
 }
+
