@@ -43,16 +43,39 @@ export function insertSort(arr) {
   for (let i = 1; i < len; i++) { // 遍历未排序的区域
     const start = arr[i]
     // 将start与左边的比较(从右向比)
-    for (let j = i-1; j >=0; j--) {
+    let j
+    for (j = i-1; j >=0; j--) {
       if (arr[j]>start) { // 所有比当前start大的都要向右移动一位
         arr[j+1] = arr[j]
-      } else { // 当前元素<=start
-        // 将 start插入当前位置的右边
-        arr[j+1] = start
-        break // 不用再向左遍历
-      }
+      } else {
+        break
+      } 
     }
+    arr[j+1] = start
+    /* let j = i -1
+    while(j>=0 && arr[j]>start) {
+      arr[j+1] = arr[j]
+      j--
+    }
+    arr[j+1] = start */
   }
 
   return arr
 }
+
+/* function sellSort(arr) {
+  let distance = array.length
+  while(distance> 1) {
+    distance = Math.floor(distance / 2)
+    for (let i = 0; i < distance; i++) {
+      for (let j = i + distance; j < array.length; j++) {
+        const tem = array[j]
+        for (let k = i; k < array.length; k++) {
+          const element = array[k];
+          
+        }
+      }
+    }
+  }
+} */
+
