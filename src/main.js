@@ -31,5 +31,6 @@ export {default as PubSub} from './pub-sub'
 
 export {default as Stack} from './da/stack'
 export {default as Queue} from './da/queue'
+export {default as PriorityQueue} from './da/priority-queue'
 
 
