@@ -30,5 +30,6 @@ export {default as Promise} from './promise'
 export {default as PubSub} from './pub-sub'
 
 export {default as Stack} from './da/stack'
+export {default as Queue} from './da/queue'
 
 
