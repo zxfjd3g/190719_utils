@@ -36,3 +36,23 @@ export function selectSort(arr) {
 
   return arr
 }
+
+export function insertSort(arr) {
+  const len = arr.length
+  // 假设第一个元素已排序了
+  for (let i = 1; i < len; i++) { // 遍历未排序的区域
+    const start = arr[i]
+    // 将start与左边的比较(从右向比)
+    for (let j = i-1; j >=0; j--) {
+      if (arr[j]>start) { // 所有比当前start大的都要向右移动一位
+        arr[j+1] = arr[j]
+      } else { // 当前元素<=start
+        // 将 start插入当前位置的右边
+        arr[j+1] = start
+        break // 不用再向左遍历
+      }
+    }
+  }
+
+  return arr
+}
