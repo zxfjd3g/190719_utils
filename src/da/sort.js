@@ -62,20 +62,3 @@ export function insertSort(arr) {
 
   return arr
 }
-
-/* function sellSort(arr) {
-  let distance = array.length
-  while(distance> 1) {
-    distance = Math.floor(distance / 2)
-    for (let i = 0; i < distance; i++) {
-      for (let j = i + distance; j < array.length; j++) {
-        const tem = array[j]
-        for (let k = i; k < array.length; k++) {
-          const element = array[k];
-          
-        }
-      }
-    }
-  }
-} */
-

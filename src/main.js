@@ -33,4 +33,4 @@ export {default as Stack} from './da/stack'
 export {default as Queue} from './da/queue'
 export {default as PriorityQueue} from './da/priority-queue'
 export { bubbleSort, selectSort, insertSort } from './da/sort'
-
+export { shellSort } from './da/sort2'
