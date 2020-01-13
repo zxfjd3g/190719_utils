@@ -255,10 +255,10 @@ async-each@^1.0.1:
   resolved "https://registry.npmjs.org/async-each/-/async-each-1.0.3.tgz#b727dbf87d7651602f06f4d4ac387f47d91b0cbf"
   integrity sha512-z/WhQ5FPySLdvREByI2vZiTWwCnF0moMJ1hK9YQwDTHKh6I7/uSckMetoRGb5UBZPC1z0jlw+n/XCgjeH7y1AQ==
 
-atguigu-utils@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.npmjs.org/atguigu-utils/-/atguigu-utils-1.1.8.tgz#bebeb49b5d5a6755116921f737a8ef28ac09d4dd"
-  integrity sha512-QnqO33u/44H9ZP0rQB+NhTXXsFmKO01RCysIgt7vvCrVbLX9Bn7iW52q+wl4fWZvq7Eh5IllozG9d49O1T5dmA==
+atguigu-utils@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/atguigu-utils/-/atguigu-utils-1.2.1.tgz#8c1e9cd14537d029c4146a56d5ffbf1c4dd42f4e"
+  integrity sha512-rD9LhJ6xhSGlzW0hxr/nE8wg3xtKaR0Jf9+In/gFylXH03Uu2dtOtZcON7SamHNbdsU4LCKMQaZIXUVXzuSHQA==
   dependencies:
     lodash "^4.17.15"
 
