@@ -43,21 +43,12 @@ export function insertSort(arr) {
   for (let i = 1; i < len; i++) { // 遍历未排序的区域
     const start = arr[i]
     // 将start与左边的比较(从右向比)
-    let j
-    for (j = i-1; j >=0; j--) {
-      if (arr[j]>start) { // 所有比当前start大的都要向右移动一位
-        arr[j+1] = arr[j]
-      } else {
-        break
-      } 
-    }
-    arr[j+1] = start
-    /* let j = i -1
+    let j = i -1
     while(j>=0 && arr[j]>start) {
-      arr[j+1] = arr[j]
+      arr[j+1] = arr[j] // 向右移位
       j--
     }
-    arr[j+1] = start */
+    arr[j+1] = start
   }
 
   return arr

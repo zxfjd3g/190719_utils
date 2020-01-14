@@ -5,7 +5,7 @@
 function Stack() {
 
   // 用于保存元素数据的数组
-  const arr = []
+  let arr = [] // 不想让外部直接通过stack.arr得到数组
 
   /* 
     1. 如果不判断, 问题是创建多个stack总是使用最后创建的arr
@@ -37,6 +37,11 @@ function Stack() {
   // 是否是空栈: isEmpty()
   this.isEmpty = function () {
     return arr.length===0
+  }
+
+  // 清栈
+  this.clear = function () {
+    arr = []
   }
 }
 
