@@ -1,5 +1,4 @@
 # 1. 工具函数库lodash理解
-
 ```
 1. 封装了各种类型数据简化操作的函数库
   数组
@@ -26,7 +25,7 @@
 7). Promise
 8). ajax函数封装: axios
 9). 数据结构与排序算法
-```   
+```
 
 ## 1. 函数相关
 ### 1). 函数的call() / apply() / bind()
@@ -188,20 +187,20 @@
     2. 字符串是否是回文: palindrome(str) 如果给定的字符串是回文，则返回 true ；否则返回 false
     3. 截取字符串: truncate(str, num) 如果字符串的长度超过了num, 截取前面num长度部分, 并以...结束
 
-## 5. 手写事件总线: event-bus
+## 5. 手写事件总线: event-bus (难)
     1. EventBus: 包含所有功能的全局事件总线对象
     2. EventBus.on(eventName, listener): 绑定事件监听
     3. EventBus.emit(eventName, data): 分发事件
     4. EventBus.off(eventName): 解绑事件监听
 
-## 6. 手写消息订阅与发布: pub-sub
+## 6. 手写消息订阅与发布: pub-sub (难)
     1. PubSub: 包含所有功能的订阅/发布消息的管理者
     1. PubSub.subscribe(msg, subscriber): 订阅消息: 指定消息名和订阅者回调函数
     2. PubSub.publish(msg, data): 异步发布消息: 指定消息名和数据
     3. PubSub.publishSync(msg, data): 同步发布消息: 指定消息名和数据
     4. PubSub.unsubscribe(flag): 取消订阅: 根据标识取消某个或某些消息的订阅
 
-## 7. 手写Promise
+## 7. 手写Promise (难)
     1. 定义整体结构
     2. Promise构造函数的实现
     3. promise.then()/catch()的实现
@@ -209,7 +208,7 @@
     5. Promise.all/race()的实现
     6. Promise.resolveDelay()/rejectDelay()的实现
 
-## 8. 手写ajax请求函数: axios
+## 8. 手写ajax请求函数 axios (难)
     1.函数的返回值为promise, 成功的结果为response, 失败的结果为error
     2.能处理多种类型的请求: GET/POST/PUT/DELETE
     3.函数的参数为一个配置对象
