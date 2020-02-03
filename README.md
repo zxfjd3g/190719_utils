@@ -28,7 +28,7 @@
 ```
 
 ## 1. 函数相关
-### 1). 函数的call() / apply() / bind()
+### 1). 函数对象的call() / apply() / bind()
     1. 区别call()/apply()/bind()
         call(obj)/apply(obj): 调用函数, 指定函数中的this为第一个参数的值
         bind(obj): 
