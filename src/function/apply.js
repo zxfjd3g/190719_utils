@@ -1,3 +1,5 @@
+// import call from './call'
+
 export function apply (fn, obj, args) {
   // 处理obj是undefined或者null的情况
   if (obj===undefined || obj===null) {
