@@ -72,45 +72,95 @@
     */
     Promise.prototype.then = function (onResolved, onRejected) {
       const self = this
-      
+
+      // 如果onResolved不是函数, 需要针value传递下去
+      onResolved = typeof onResolved === 'function' ? onResolved : value => value
+      // 如果onRejected不是函数, 需要针reason传递下去
+      onRejected = typeof onRejected === 'function' ? onRejected : reason => {throw reason}
+
       // 返回一个新的promise
       return new Promise((resolve, reject) => {
+
+        /* 
+        调用指定的回调函数
+        根据执行的结果, 更新返回promise的状态
+        */
+        function handleCallback(callback) {
+          try {
+            const result = callback(self.data)
+            if (result instanceof Promise) {
+              result.then(
+                value => {resolve(value)},
+                reason => {reject(reason)}
+              )
+              // result.then(resolve, reject)
+            } else {
+              resolve(result)
+            }
+          } catch (error) {
+            reject(error)
+          } 
+        }
+
         if (self.status===RESOLVED) {
           setTimeout(() => {
-            try {
-              const result = onResolved(self.data)
-              if (result instanceof Promise) {
-                result.then(
-                  value => {resolve(value)},
-                  reason => {reject(reason)}
-                )
-                // result.then(resolve, reject)
-              } else {
-                resolve(result)
-              }
-            } catch (error) {
-              reject(error)
-            } 
+            handleCallback(onResolved)
           })
           
         } else if (self.status===REJECTED) {
-          onRejected(self.data)
+          setTimeout(() => {
+            handleCallback(onRejected)
+          })
         } else { // PENDING
-
+          // 保存回调函数
+          self.callbacks.push({
+            onResolved: value => handleCallback(onResolved),
+            onRejected: reason => handleCallback(onRejected)
+          })
         }
       })
     }
 
     Promise.prototype.catch = function (onRejected) {
-      
+      return this.then(undefined, onRejected)
     }
 
-    Promise.resolve = function (value) {
-      
+    Promise.resolve = function (value) { // value有可能是一个promise
+      return new Promise((resolve, reject) => {
+        if (value instanceof Promise) {
+          value.then(resolve, reject)
+        } else {
+          resolve(value)
+        }
+      })
     }
+
     Promise.reject = function (reason) {
-      
+      return new Promise((resolve, reject) => {
+        reject(reason)
+      })
     }
+
+    Promise.resolveDelay = function (value, time) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (value instanceof Promise) {
+            value.then(resolve, reject)
+          } else {
+            resolve(value)
+          }
+        }, time)
+      })
+    }
+
+    Promise.rejectDelay = function (reason, time) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          reject(reason)
+        }, time)
+      })
+    }
+
     Promise.race = function (promises) {
       
     }
@@ -123,6 +173,20 @@
   </script>
 
   <script>
+    const p1 = Promise.resolve(5)
+    const p2 = Promise.resolve(Promise.reject(6))
+    const p3 = Promise.resolveDelay(7, 1000)
+    const p4 = Promise.rejectDelay(8, 2000)
+    p1.then(value => console.log('p1', value))
+    p2.catch(reason => console.log('p2', reason))
+    p3.then(value => console.log('p3', value))
+    p4.catch(reason => console.log('p4', reason))
+
+  </script>
+
+
+<!-- 
+  <script>
     new Promise((resolve, reject) => {  // excutor
       // 遍历异步任务
       setTimeout(() => {
@@ -132,12 +196,44 @@
         reject(2)
       }, 1000)
       // throw 3
-    }).then(
-      value => console.log('onResolved()', value), // onResolved
-      reason => console.log('onRejected()', reason)  // onRejected
+    })
+    .then(
+      value => {
+        console.log('onResolved1()', value)
+      }, // onResolved
+      reason => {
+        console.log('onRejected1()', reason)
+        throw 3
+      }  // onRejected
+    )
+    .then(
+      value => {
+        console.log('onResolved2()', value)
+      }, // onResolved
+      reason => {
+        console.log('onRejected2()', reason)
+      }  // onRejected
+    )
+    .then(
+      value => {
+        console.log('onResolved3()', value)
+      }
+    )
+    .catch(
+      reason => {
+        console.log('catch()', reason)
+      }
+    )
+    .then(
+      value => {
+        console.log('onResolved4()', value)
+      },
+      reason => {
+        console.log('onRejected4()', reason)
+      }  
     )
     console.log('new Promise()之后')
 
-  </script>
+  </script> -->
 </body>
 </html>
