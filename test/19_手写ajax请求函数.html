@@ -16,6 +16,25 @@
 <script>
   const { axios } = aUtils
 
+  /* 
+  1. 内部包装的XHR对象发送ajax请求
+  2. 函数的返回值是promise对象, 成功的value是response, 失败的reason是error
+  3. 接收的参数是配置对象
+    {
+      url: '',
+      method: 'GET/POST/PUT/DELETE',
+      params: {
+        username: 'tom',
+        age: 1
+      },
+      data: {
+        username: 'tom',
+        age: 1
+      }
+    }
+  4. 对请求体参数和响应的json数据进行转换
+  */
+
   /* 1. GET请求: 从服务器端获取数据*/
   function testGet() {
     axios({
