@@ -30,6 +30,17 @@
     7. 判断是否有下标为偶数的元素值为奇数
     */
 
+    const aUtils2 = {
+      map (array, callback) {
+        const arr = []
+        for (let index = 0; index < array.length; index++) {
+          const element = array[index];
+          arr.push(callback(element, index))
+        }
+        return arr
+      }
+    }
+
     const arr = [1, 3, 6, 9, 15, 19, 16]
 
     // 1. 产生一个每个元素都比原来大10的新数组

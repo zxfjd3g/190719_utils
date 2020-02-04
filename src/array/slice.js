@@ -21,6 +21,7 @@ export function slice(array, begin, end) {
     end = array.length
   }
 
+  // 先实现主体操作
   for (let index = begin; index < end; index++) {
     arr.push(array[index])
   }

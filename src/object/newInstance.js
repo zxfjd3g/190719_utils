@@ -30,3 +30,23 @@ export function newInstance(Fn, ...args) {
   // 返回新建的对象
   return obj
 }
+
+
+
+
+
+
+
+
+new Fn()
+
+实例对象有__proto__属性
+
+// 将构造函数对象的显式原型属性的值赋值给实例对象的隐式原型属性
+obj.__proto__ = Fn.prototype
+
+
+
+
+
+

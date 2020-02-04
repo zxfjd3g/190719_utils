@@ -10,6 +10,7 @@
 
     3). 面试加强版本
         解决问题2: 循环引用正常
+
     4). 面试加强版本2(优化遍历性能)
         数组: while | for | forEach() 优于 for-in | keys()&forEach() 
         对象: for-in 与 keys()&forEach() 差不多
@@ -28,7 +29,7 @@ export function deepClone2 (target) {
   if (target instanceof Array || (target!==null && typeof target==='object')) {
     const cloneTarget = target instanceof Array ? [] : {}
     for (const key in target) {
-      if (target.hasOwnProperty(key)) {
+      if (target.hasOwnProperty(key)) { // 只遍历对象自身的属性
         cloneTarget[key] = deepClone2(target[key])  // 对属性值进行递归处理
       }
     }
