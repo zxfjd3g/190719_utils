@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>手写Promise</title>
+</head>
+<body>
+
+  <script>
+    const PENDING = 'pending' // 初始/未确定
+    const RESOLVED = 'resolved' // 成功
+    const REJECTED = 'rejected' // 失败
+
+    function Promise(excutor) {
+      const self = this
+      self.status = PENDING
+      self.data = undefined
+      /* 
+      {
+        onResolved: function (){},
+        onRejected: function (){}
+      }
+      */
+      self.callbacks = []  // 用来保存所有待处理的成功和失败的回调函数
+
+      function resolve(value) {
+        // 立即改状态
+        self.status = RESOLVED
+        // 立即存数据
+        self.data = value
+        // 异步调用待处理的成功的回调函数
+        setTimeout(() => {
+          self.callbacks.forEach(callbackObj => {
+            callbackObj.onResolved(value)
+          })
+        })
+      }
+
+      function reject(reason) {
+        // 立即改状态
+        self.status = REJECTED
+        // 立即存数据
+        self.data = reason
+        // 异步调用待处理的成功的回调函数
+        setTimeout(() => {
+          self.callbacks.forEach(callbackObj => {
+            callbackObj.onRejected(reason)
+          })
+        })
+      }
+
+      try {
+        // 立即执行执行器函数
+        excutor(resolve, reject)
+      } catch (error) {
+        reject(error)
+      }
+    }
+    
+    /* 
+    1. 返回一个新的promise
+    2. 新的promise的状态由onResolved/onRejected执行的结果决定
+      1). 返回一个非promise   ===> 成功
+      2). 抛出异常  ===> 失败
+      3). 返回一个promise  ===> 与这个promise的结果一致
+    3. 在then中要对onResolved/onRejected进行处理: 根据当前promise的状态来操作
+      1). resolved: 异步调用onResolved
+      2). rejected: 异步调用onRejected
+      3). pending: 将onResolved/onRejected保存到callbacks中
+    */
+    Promise.prototype.then = function (onResolved, onRejected) {
+      const self = this
+      
+      // 返回一个新的promise
+      return new Promise((resolve, reject) => {
+        if (self.status===RESOLVED) {
+          setTimeout(() => {
+            try {
+              const result = onResolved(self.data)
+              if (result instanceof Promise) {
+                result.then(
+                  value => {resolve(value)},
+                  reason => {reject(reason)}
+                )
+                // result.then(resolve, reject)
+              } else {
+                resolve(result)
+              }
+            } catch (error) {
+              reject(error)
+            } 
+          })
+          
+        } else if (self.status===REJECTED) {
+          onRejected(self.data)
+        } else { // PENDING
+
+        }
+      })
+    }
+
+    Promise.prototype.catch = function (onRejected) {
+      
+    }
+
+    Promise.resolve = function (value) {
+      
+    }
+    Promise.reject = function (reason) {
+      
+    }
+    Promise.race = function (promises) {
+      
+    }
+    Promise.all = function (promises) {
+      
+    }
+
+
+
+  </script>
+
+  <script>
+    new Promise((resolve, reject) => {  // excutor
+      // 遍历异步任务
+      setTimeout(() => {
+        // 如果成功
+        // resolve(1)
+        // 如果失败
+        reject(2)
+      }, 1000)
+      // throw 3
+    }).then(
+      value => console.log('onResolved()', value), // onResolved
+      reason => console.log('onRejected()', reason)  // onRejected
+    )
+    console.log('new Promise()之后')
+
+  </script>
+</body>
+</html>
